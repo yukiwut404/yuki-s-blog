@@ -1,0 +1,82 @@
+import { AboutPageHeading } from "@/components/public/about/AboutPageHeading";
+import { AboutProfileSection } from "@/components/public/about/AboutProfileSection";
+import { CertificationsSection } from "@/components/public/about/CertificationsSection";
+import { EducationSection } from "@/components/public/about/EducationSection";
+import { ExperienceSection } from "@/components/public/about/ExperienceSection";
+import { SkillsSection } from "@/components/public/about/SkillsSection";
+import {
+  getAboutPageIntro,
+  getCertifications,
+  getEducation,
+  getExperiences,
+  getSiteSettings,
+  getSkillCategories,
+  getSkills,
+} from "@/lib/data/public-queries";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about Yuta Asakura's background, skills, experience, and education in full-stack web development.",
+};
+
+export const revalidate = 3600;
+
+type SocialLinks = {
+  github?: string;
+  linkedin?: string;
+};
+
+export default async function AboutPage() {
+  // Fetch all about page data in parallel for optimal performance
+  const [intro, skills, categoryOrder, experiences, education, certifications, siteSettings] =
+    await Promise.all([
+      getAboutPageIntro(),
+      getSkills(),
+      getSkillCategories(),
+      getExperiences(),
+      getEducation(),
+      getCertifications(),
+      getSiteSettings(),
+    ]);
+
+  // Check if there's any content to display
+  const hasContent =
+    skills.length > 0 ||
+    experiences.length > 0 ||
+    education.length > 0 ||
+    certifications.length > 0;
+
+  const hasProfileSection = intro && (intro.profileName || intro.introHeadline || intro.introBio);
+
+  const socialLinks = (siteSettings?.socialLinks as SocialLinks) ?? {};
+
+  return (
+    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-12">
+      <AboutPageHeading intro={intro} />
+
+      {hasProfileSection && (
+        <AboutProfileSection
+          intro={intro}
+          profileImage={intro?.profileImageUrl ?? undefined}
+          email={siteSettings?.email}
+          socialLinks={socialLinks}
+        />
+      )}
+
+      {!hasContent ? (
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">Content coming soon.</p>
+        </div>
+      ) : (
+        <>
+          {skills.length > 0 && <SkillsSection skills={skills} categoryOrder={categoryOrder} />}
+          {experiences.length > 0 && <ExperienceSection experiences={experiences} />}
+          {education.length > 0 && <EducationSection education={education} />}
+          {certifications.length > 0 && <CertificationsSection certifications={certifications} />}
+        </>
+      )}
+    </div>
+  );
+}

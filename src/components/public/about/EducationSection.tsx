@@ -1,0 +1,112 @@
+"use client";
+
+import { DocumentModal } from "@/components/public/DocumentModal";
+import { useLocale } from "@/hooks/use-locale";
+import { t, ui } from "@/lib/i18n";
+import { formatDateRange } from "@/lib/utils/date-format";
+import { FileText, GraduationCap } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import type { Education } from "@/lib/data/types";
+
+interface EducationSectionProps {
+  education: Education[];
+}
+
+export function EducationSection({ education }: EducationSectionProps) {
+  const { locale } = useLocale();
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
+  const [openDocumentId, setOpenDocumentId] = useState<string | null>(null);
+
+  const handleImageError = (eduId: string) => {
+    setFailedImages((prev) => new Set(prev).add(eduId));
+  };
+
+  const openDoc = education.find((e) => e.id === openDocumentId);
+
+  return (
+    <section className="mb-16">
+      <h2 className="text-2xl font-bold text-foreground mb-6">{ui("education", locale)}</h2>
+      <div className="space-y-4">
+        {education.map((edu) => {
+          const shouldShowImage = edu.logoUrl && !failedImages.has(edu.id);
+
+          return (
+            <div
+              key={edu.id}
+              className="flex items-start justify-between gap-4 p-5 rounded-xl border border-border bg-card"
+            >
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg font-semibold text-foreground">
+                  {edu.institutionUrl ? (
+                    <a
+                      href={edu.institutionUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 rounded"
+                    >
+                      {edu.institution}
+                    </a>
+                  ) : (
+                    edu.institution
+                  )}
+                </h3>
+
+                <p className="text-sm text-muted-foreground">{t(edu, "degree", locale)}</p>
+
+                {edu.field && <p className="text-sm text-muted-foreground">{edu.field}</p>}
+
+                <p className="text-sm text-muted-foreground mt-1">
+                  {formatDateRange(edu.startDate, edu.endDate, "yyyy")}
+                </p>
+
+                {t(edu, "achievements", locale) && (
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {t(edu, "achievements", locale)}
+                  </p>
+                )}
+
+                {edu.documentUrl && (
+                  <button
+                    type="button"
+                    onClick={() => setOpenDocumentId(edu.id)}
+                    className="inline-flex items-center gap-1.5 mt-3 text-xs text-muted-foreground hover:text-foreground hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 rounded"
+                  >
+                    <FileText className="h-3.5 w-3.5" />
+                    View Credentials
+                  </button>
+                )}
+              </div>
+
+              <div
+                className="relative shrink-0 h-10 w-10 rounded-lg bg-transparent overflow-hidden"
+                aria-hidden="true"
+              >
+                {shouldShowImage ? (
+                  <Image
+                    src={edu.logoUrl ?? ""}
+                    alt={`${edu.institution} logo`}
+                    fill
+                    className="object-contain"
+                    sizes="40px"
+                    onError={() => handleImageError(edu.id)}
+                  />
+                ) : (
+                  <GraduationCap className="h-5 w-5 text-muted-foreground" />
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {openDoc?.documentUrl && (
+        <DocumentModal
+          open={!!openDocumentId}
+          onClose={() => setOpenDocumentId(null)}
+          documentUrl={openDoc.documentUrl}
+        />
+      )}
+    </section>
+  );
+}
