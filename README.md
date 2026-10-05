@@ -1,6 +1,6 @@
 # Yuki's Portfolio
 
-A frontend-only extraction of the public portfolio experience from `portfolio-v2`.
+A personal portfolio built as I explore different sides of tech, experiment with new ideas, and figure out where I fit best.
 
 <!-- ## What was removed
 
