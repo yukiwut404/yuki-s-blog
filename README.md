@@ -1,8 +1,8 @@
-# Portfolio Frontend
+# Yuki's Portfolio
 
 A frontend-only extraction of the public portfolio experience from `portfolio-v2`.
 
-## What was removed
+<!-- ## What was removed
 
 - Prisma / PostgreSQL / Neon
 - AWS / Cognito / S3 / SES
@@ -67,4 +67,10 @@ The original author's sample content has been replaced with generic placeholder 
 
 ## Content
 
-Blog and project detail pages use local Markdown files. Add a new post under `src/content/blog/` or a new project under `src/content/projects/`. The filename becomes the URL slug.
+Blog and project detail pages use local Markdown files. Add a new post under `src/content/blog/` or a new project under `src/content/projects/`. The filename becomes the URL slug. -->
+
+## Credits
+
+This project is a personal recreation inspired by the portfolio and blog of [Yuta Asakura](https://asakurayuta.dev/).
+
+Original website: [asakurayuta.dev](https://asakurayuta.dev/)
