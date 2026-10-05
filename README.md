@@ -1,38 +1,35 @@
 # Yuki's Portfolio
 
-A personal portfolio built as I explore different sides of tech, experiment with new ideas, and figure out where I fit best.
+A personal portfolio built with Next.js, React, and Tailwind CSS.
 
-<!-- ## What was removed
+## Run locally with Docker
 
-- Prisma / PostgreSQL / Neon
-- AWS / Cognito / S3 / SES
-- Admin CMS
-- API routes
-- Sentry / Upstash
-- Database migrations and server-side seed
+Install Docker Desktop or Docker Engine with the Compose plugin. From this directory, run:
 
-## What remains
+```bash
+docker compose up --build
+```
 
-- Next.js 16
-- React 19
-- Tailwind CSS 4
-- Public home page
-- Projects + project detail pages
-- Blog + blog detail pages
-- About page
-- Dark mode
-- EN / JA locale toggle
-- Local TypeScript seed data
+Open [http://localhost:3000](http://localhost:3000). Docker installs the dependencies while building the image. On startup, the container runs `npm run seed` and then `npm run dev`. Changes to project files are mounted into the container for Next.js hot reload.
 
-## Local data
+Stop the app with `Ctrl+C`. To remove the container and its network, run:
 
-Edit:
+```bash
+docker compose down
+```
 
-`src/lib/data/seed.ts`
+If you change `package.json` or `package-lock.json`, recreate the dependency volume and rebuild:
 
-That file is your local CMS replacement. Add/remove projects, posts, skills, education, etc. there. There is no database to migrate or seed.
+```bash
+docker compose down -v
+docker compose up --build
+```
 
-## Run
+## Local content
+
+`npm run seed` checks that `src/lib/data/seed.ts` exists and prints the available collections. Edit that file to update projects, posts, skills, experience, education, and certifications. Blog posts and projects can also be added as Markdown under `src/content/blog/` and `src/content/projects/`.
+
+## Run without Docker
 
 ```bash
 npm install
@@ -40,37 +37,6 @@ npm run seed
 npm run dev
 ```
 
-Open http://localhost:3000
-
-## Production
-
-```bash
-npm run build
-npm start
-```
-
-## Vercel
-
-Push this folder to GitHub and import the repository into Vercel.
-
-Optional environment variable:
-
-```env
-NEXT_PUBLIC_APP_URL=https://your-domain.vercel.app
-```
-
-No database or other backend environment variables are required.
-
-## Important
-
-The original author's sample content has been replaced with generic placeholder content in `src/lib/data/seed.ts`. Replace it with your own portfolio information and images before publishing.
-
-## Content
-
-Blog and project detail pages use local Markdown files. Add a new post under `src/content/blog/` or a new project under `src/content/projects/`. The filename becomes the URL slug. -->
-
 ## Credits
 
 This project is a personal recreation inspired by the portfolio and blog of [Yuta Asakura](https://asakurayuta.dev/).
-
-Original website: [asakurayuta.dev](https://asakurayuta.dev/)
