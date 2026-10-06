@@ -97,11 +97,11 @@ const UI_STRINGS = {
     searchPosts: "Search posts...",
     noPostsFound: "No posts found matching your criteria.",
     postsFound: "found",
-    heroName: "Yuta Asakura!",
+    heroName: "Yuki!",
     heroNameJa: "朝倉優太です!",
     viewCertificate: "View Certificate",
     earned: "Earned",
-    copyright: "Your Name | Portfolio",
+    copyright: "Yuki | Portfolio",
     skillCategoryLanguages: "Languages",
     skillCategoryFrameworks: "Frameworks",
     skillCategoryCloud: "Cloud & DevOps",
@@ -186,11 +186,11 @@ const UI_STRINGS = {
     searchPosts: "記事を検索...",
     noPostsFound: "条件に一致する記事が見つかりません。",
     postsFound: "件",
-    heroName: "Yuta Asakura!",
+    heroName: "Yuki!",
     heroNameJa: "朝倉優太です!",
     viewCertificate: "証明書を見る",
     earned: "取得日",
-    copyright: "Your Name | Portfolio",
+    copyright: "Yuki | Portfolio",
     skillCategoryLanguages: "言語",
     skillCategoryFrameworks: "フレームワーク",
     skillCategoryCloud: "クラウド & DevOps",
@@ -256,9 +256,12 @@ const SKILL_CATEGORY_MAP: Record<string, string> = {
   Frontend: "フロントエンド",
   Backend: "バックエンド",
   Frameworks: "フレームワーク",
+  Design: "デザイン",
+  "Business Analysis": "ビジネスアナリシス",
   "Cloud & DevOps": "クラウド & DevOps",
   "AWS Services": "AWSサービス",
   Databases: "データベース",
+  Database: "データベース",
   Tools: "ツール",
   Other: "その他",
 };
@@ -268,7 +271,20 @@ export function localizeSkillCategory(category: string, locale: Locale): string 
     return SKILL_CATEGORY_MAP[category];
   }
   if (locale === "vi") {
-    const map: Record<string, string> = { Languages: "Ngôn ngữ", Frontend: "Frontend", Backend: "Backend", Frameworks: "Framework", "Cloud & DevOps": "Cloud & DevOps", Databases: "Cơ sở dữ liệu", Tools: "Công cụ", Other: "Khác", Design: "Thiết kế" };
+    const map: Record<string, string> = {
+      Languages: "Ngôn ngữ",
+      Frontend: "Frontend",
+      Backend: "Backend",
+      Frameworks: "Framework",
+      Design: "Thiết kế",
+      "Business Analysis": "Phân tích nghiệp vụ",
+      "Cloud & DevOps": "Cloud & DevOps",
+      "AWS Services": "AWS Services",
+      Databases: "Cơ sở dữ liệu",
+      Database: "Cơ sở dữ liệu",
+      Tools: "Công cụ",
+      Other: "Khác",
+    };
     return map[category] ?? category;
   }
   return category;

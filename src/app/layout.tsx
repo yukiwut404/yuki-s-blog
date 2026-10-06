@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
-  title: { default: "Your Name | Portfolio", template: "%s | Your Name" },
+  title: { default: "Yuki | Portfolio", template: "%s | Yuki" },
   description: "A minimal personal portfolio.",
 };
 

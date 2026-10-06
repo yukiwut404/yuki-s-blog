@@ -6,7 +6,7 @@ import { getFeaturedProjects, getHero, getRecentPosts } from "@/lib/data/public-
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cloud-Native Software Engineer · AWS & Azure",
+  title: "Business Analyst · Software Engineer",
   description:
     "Yuta Asakura is a software engineer at Sogo & Seibu in Japan, building cloud-native applications across AWS and Azure. 7x AWS and 3x Azure certified.",
 };
@@ -26,7 +26,7 @@ export default async function HomePage() {
         data={{
           "@context": "https://schema.org",
           "@type": "Person",
-          name: "Yuta Asakura",
+          name: "Yuki",
           url: "https://asakurayuta.dev",
           jobTitle: "DX Software Engineer",
           worksFor: {
@@ -44,8 +44,8 @@ export default async function HomePage() {
             "React",
           ],
           sameAs: [
-            "https://github.com/yutaasakura96",
-            "https://linkedin.com/in/yuta-asakura",
+            "https://github.com/yukiwut404",
+            "https://linkedin.com/in/ngoc-han-tran",
             "https://www.wantedly.com/id/yuta_asakura",
           ],
         }}
