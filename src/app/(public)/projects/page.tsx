@@ -7,7 +7,7 @@ import { Suspense } from "react";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Portfolio projects by Yuta Asakura — full-stack web applications built with Next.js, TypeScript, AWS, and more.",
+    "Portfolio projects by Yuki — full-stack web applications built with Next.js, TypeScript, and more.",
 };
 
 export const revalidate = 3600;

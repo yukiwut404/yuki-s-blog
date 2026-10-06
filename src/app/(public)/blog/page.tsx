@@ -7,7 +7,7 @@ import { Suspense } from "react";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Technical blog posts by Yuta Asakura on web development, AWS, TypeScript, and software engineering.",
+    "Technical blog posts by Yuki on web development, TypeScript, and software engineering.",
 };
 
 export const revalidate = 3600;
