@@ -6,6 +6,7 @@ import type { AboutPage } from "@/lib/data/types";
 import { Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { getAssetPath } from "@/lib/asset-path";
 
 type SocialLinks = {
   github?: string;
@@ -45,7 +46,7 @@ export function AboutProfileSection({
             {/* Profile image */}
             <div className="relative size-44 rounded-full overflow-hidden z-10">
               <Image
-                src={profileImage}
+                src={getAssetPath(profileImage)}
                 alt={intro.profileName ?? "Profile photo"}
                 fill
                 className="object-cover"

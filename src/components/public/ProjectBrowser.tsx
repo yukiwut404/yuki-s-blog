@@ -7,27 +7,28 @@ import { Search, SlidersHorizontal, X } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { ProjectCard } from "./ProjectCard";
+import type { PublicProject } from "@/lib/data/types";
 
-interface Project {
-  id: string;
-  slug: string;
-  title: string;
-  shortDescription: string;
-  techTags: string[];
-  featured: boolean;
-  displayOrder: number;
-  startDate: Date | null;
-  endDate: Date | null;
-  liveUrl: string | null;
-  repoUrl: string | null;
-  titleJa?: string | null;
-    titleVi?: string | null;
-  shortDescriptionJa?: string | null;
-    shortDescriptionVi?: string | null;
-}
+// interface Project {
+//   id: string;
+//   slug: string;
+//   title: string;
+//   shortDescription: string;
+//   techTags: string[];
+//   featured: boolean;
+//   displayOrder: number;
+//   startDate?: Date | null;
+//   endDate?: Date | null;
+//   liveUrl?: string | null;
+//   repoUrl: string | null;
+//   titleJa?: string | null;
+//     titleVi?: string | null;
+//   shortDescriptionJa?: string | null;
+//     shortDescriptionVi?: string | null;
+// }
 
 interface ProjectBrowserProps {
-  projects: Project[];
+  projects: PublicProject[];
 }
 
 type SortOption = "order" | "newest" | "oldest" | "title";

@@ -14,6 +14,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getAssetPath } from "@/lib/asset-path";
 
 export const revalidate = 3600;
 
@@ -145,7 +146,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {post.featuredImage && (
             <div className="relative aspect-video overflow-hidden rounded-xl bg-muted mb-8">
               <Image
-                src={post.featuredImage}
+                src={getAssetPath(post.featuredImage)}
                 alt={post.title}
                 fill
                 className="object-cover"

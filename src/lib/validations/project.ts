@@ -30,11 +30,13 @@ export function normalizeImagesToGroups(raw: unknown): GalleryImageGroup[] {
     return [
       {
         name: "",
-        images: (raw as Array<{ url: string; alt: string; order: number }>).map((img, i) => ({
-          url: img.url,
-          alt: img.alt ?? "",
-          order: i,
-        })),
+        images: (raw as Array<{ url: string; alt?: string; order?: number }>).map(
+          (img, i) => ({
+            url: img.url,
+            alt: img.alt ?? "",
+            order: img.order ?? i,
+          })
+        ),
       },
     ];
   }

@@ -15,6 +15,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { normalizeImagesToGroups } from "@/lib/validations/project";
+import { getAssetPath } from "@/lib/asset-path";
 
 export const revalidate = 3600;
 
@@ -90,7 +92,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   const { prev, next } = await getAdjacentProjects(project.displayOrder);
 
-  const imageGroups = [{ name: "", images: Array.isArray(project.images) ? project.images as { url: string; alt?: string; order: number }[] : [] }];
+  // const imageGroups = [{ name: "", images: Array.isArray(project.images) ? project.images as { url: string; alt?: string; order: number }[] : [] }];
+  const imageGroups = normalizeImagesToGroups(project.images);
 
   return (
     <article className="mx-auto max-w-3xl px-4 sm:px-6 py-12">
@@ -192,7 +195,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {project.thumbnailImage && (
         <div className="rounded-xl overflow-hidden mb-8">
           <Image
-            src={project.thumbnailImage}
+            src={getAssetPath(project.thumbnailImage)}
             alt={project.title}
             width={1600}
             height={1200}

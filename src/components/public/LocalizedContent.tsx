@@ -13,7 +13,7 @@ interface LocalizedTextProps {
   className?: string;
 }
 
-export function LocalizedText({ en, ja, as: Tag = "span", className }: LocalizedTextProps) {
+export function LocalizedText({ en, ja, vi, as: Tag = "span", className }: LocalizedTextProps) {
   const { locale } = useLocale();
   const text = locale === "vi" && vi?.trim() ? vi : locale === "ja" && ja?.trim() ? ja : en;
   return <Tag className={className}>{text}</Tag>;
@@ -26,7 +26,7 @@ interface LocalizedHtmlProps {
   className?: string;
 }
 
-export function LocalizedHtml({ enHtml, jaHtml, className }: LocalizedHtmlProps) {
+export function LocalizedHtml({ enHtml, jaHtml, viHtml, className }: LocalizedHtmlProps) {
   const { locale } = useLocale();
   const html = locale === "vi" && viHtml?.trim() ? viHtml : locale === "ja" && jaHtml?.trim() ? jaHtml : enHtml;
   const sanitized = DOMPurify.sanitize(html);

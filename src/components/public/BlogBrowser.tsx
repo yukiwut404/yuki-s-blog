@@ -7,24 +7,29 @@ import { Search, SlidersHorizontal, X } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { BlogPostCard } from "./BlogPostCard";
+import type { PublicBlogPost } from "@/lib/data/types";
 
-interface BlogPost {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  featuredImage: string | null;
-  tags: string[];
-  readTime: number | null;
-  publishedAt: Date | null;
-  titleJa?: string | null;
-    titleVi?: string | null;
-  excerptJa?: string | null;
-  excerptVi?: string | null;
-}
+// interface BlogPost {
+//   id: string;
+//   slug: string;
+//   title: string;
+//   excerpt: string;
+//   featuredImage?: string | null;
+//   tags: string[];
+//   readTime?: number | null;
+//   publishedAt: Date | null;
+//   titleJa?: string | null;
+//     titleVi?: string | null;
+//   excerptJa?: string | null;
+//   excerptVi?: string | null;
+// }
+
+// interface BlogBrowserProps {
+//   posts: BlogPost[];
+// }
 
 interface BlogBrowserProps {
-  posts: BlogPost[];
+  posts: PublicBlogPost[];
 }
 
 type SortOption = "newest" | "oldest" | "title";

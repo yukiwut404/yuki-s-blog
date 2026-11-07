@@ -7,18 +7,19 @@ import { ui } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import type { FeaturedProject } from "@/lib/data/types";
 
-interface FeaturedProject {
-  id: string;
-  slug: string;
-  title: string;
-  shortDescription: string;
-  techTags: string[];
-  liveUrl: string | null;
-  repoUrl: string | null;
-  titleJa: string | null;
-  shortDescriptionJa: string | null;
-}
+// interface FeaturedProject {
+//   id: string;
+//   slug: string;
+//   title: string;
+//   shortDescription: string;
+//   techTags: string[];
+//   liveUrl?: string | null;
+//   repoUrl?: string | null;
+//   titleJa: string | null;
+//   shortDescriptionJa: string | null;
+// }
 
 interface FeaturedProjectsProps {
   projects: FeaturedProject[];

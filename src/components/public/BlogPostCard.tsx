@@ -7,21 +7,28 @@ import { format } from "date-fns";
 import { Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { PublicBlogPost } from "@/lib/data/types";
+import { getAssetPath } from "@/lib/asset-path";
+
+// interface BlogPostCardProps {
+//   post: {
+//     slug: string;
+//     title: string;
+//     excerpt: string;
+//     featuredImage?: string | null;
+//     tags: string[];
+//     readTime: number | null;
+//     publishedAt: Date | null;
+//     titleJa?: string | null;
+//     titleVi?: string | null;
+//     excerptJa?: string | null;
+//   excerptVi?: string | null;
+//   };
+//   index?: number;
+// }
 
 interface BlogPostCardProps {
-  post: {
-    slug: string;
-    title: string;
-    excerpt: string;
-    featuredImage: string | null;
-    tags: string[];
-    readTime: number | null;
-    publishedAt: Date | null;
-    titleJa?: string | null;
-    titleVi?: string | null;
-    excerptJa?: string | null;
-  excerptVi?: string | null;
-  };
+  post: PublicBlogPost;
   index?: number;
 }
 
@@ -38,7 +45,7 @@ export function BlogPostCard({ post, index = 0 }: BlogPostCardProps) {
         <Link href={`/blog/${post.slug}`}>
           <div className="relative aspect-video overflow-hidden bg-muted">
             <Image
-              src={post.featuredImage}
+              src={getAssetPath(post.featuredImage)}
               alt={post.title}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

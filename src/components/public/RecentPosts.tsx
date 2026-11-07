@@ -7,24 +7,29 @@ import { ui } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import type { PublicBlogPost } from "@/lib/data/types";
 
-interface RecentPost {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  featuredImage: string | null;
-  tags: string[];
-  readTime: number | null;
-  publishedAt: Date | null;
-  titleJa?: string | null;
-    titleVi?: string | null;
-  excerptJa?: string | null;
-  excerptVi?: string | null;
-}
+// interface RecentPost {
+//   id: string;
+//   slug: string;
+//   title: string;
+//   excerpt: string;
+//   featuredImage?: string | null;
+//   tags: string[];
+//   readTime?: number | null;
+//   publishedAt: Date | null;
+//   titleJa?: string | null;
+//     titleVi?: string | null;
+//   excerptJa?: string | null;
+//   excerptVi?: string | null;
+// }
+
+// interface RecentPostsProps {
+//   posts: RecentPost[];
+// }
 
 interface RecentPostsProps {
-  posts: RecentPost[];
+  posts: PublicBlogPost[];
 }
 
 export function RecentPosts({ posts }: RecentPostsProps) {
