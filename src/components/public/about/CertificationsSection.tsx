@@ -44,8 +44,9 @@ export function CertificationsSection({ certifications }: CertificationsSectionP
             </div>
 
             <div className="min-w-0 flex-1">
-              <h3 className="text-sm font-semibold text-foreground leading-snug">{cert.name}</h3>
-
+							<a href={cert.url} target="_blank" >
+              	<h3 className="text-sm font-semibold text-foreground leading-snug">{cert.name}</h3>
+							</a>
               <p className="text-sm text-muted-foreground">{cert.issuer}</p>
 
               {cert.credentialId && (

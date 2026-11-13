@@ -209,6 +209,7 @@ export const certifications: Certification[] = [
     certificateImage: null,
     displayOrder: 0,
     visible: true,
+		url: "https://www.credly.com/badges/7a09016a-486a-47d6-a68f-f72c872f0793/linked_in_profile",
   },
   {
     id: "c2",
@@ -222,6 +223,7 @@ export const certifications: Certification[] = [
     certificateImage: null,
     displayOrder: 1,
     visible: true,
+		url: "https://www.credly.com/badges/2bc48610-9838-48bd-9b33-d91b58bea140/linked_in_profile",
   },
   {
     id: "c3",
@@ -235,6 +237,7 @@ export const certifications: Certification[] = [
     certificateImage: null,
     displayOrder: 2,
     visible: true,
+		url: "https://www.coursera.org/account/accomplishments/specialization/MQEDG7CQT4M4",
   },
   {
     id: "c4",
@@ -248,6 +251,7 @@ export const certifications: Certification[] = [
     certificateImage: null,
     displayOrder: 3,
     visible: true,
+		url: "https://www.credly.com/badges/c4e1f1a9-2a7b-4df3-a16c-c98341d832ac/linked_in_profile",
   },
   {
     id: "c5",
@@ -261,6 +265,7 @@ export const certifications: Certification[] = [
     certificateImage: null,
     displayOrder: 4,
     visible: true,
+		url: "https://www.credly.com/badges/3fe48db3-3ef6-4434-b3b9-d2541ab0a752/linked_in_profile",
   },
   {
     id: "c6",
@@ -274,6 +279,7 @@ export const certifications: Certification[] = [
     certificateImage: null,
     displayOrder: 5,
     visible: true,
+		url: "https://www.credly.com/badges/0f24e24a-0b19-4c11-a497-e2b7fc4f6c64/linked_in_profile",
   },
 ];
 
